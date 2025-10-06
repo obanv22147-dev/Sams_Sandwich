@@ -11,7 +11,7 @@ def bread_selection():
     return bread_list[bread_selection-1]
 
 def meat_selection():
-    meat_list = ["Pork","Chicken","Ham","Tofu","No Meat"] 
+    meat_list = ["Pork","Chicken","Ham","Tofu","No Meat"] #lists of meat
     print("We have the following meats")
     count=0
     while count< len(meat_list): #prints out each item on the list
