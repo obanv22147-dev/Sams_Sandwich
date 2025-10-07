@@ -1,4 +1,6 @@
 #Sams Sandwich
+
+
 def bread_selection():
     bread_list = ["White","Brown","Italian","Granary","No Bread"]
     print("We have the following breads")
@@ -31,8 +33,37 @@ def cheese_selection():
     print(f"You selected bread is: {cheese_selection}")
     return cheese_list[cheese_selection-1]
 
+def salads_selection(): 
+    salad_list = ["Lettuce", "Tomato","Carrot", "Cucumber","Onion"]
+    count = 0
+    print("We have the following salad options, you can have as many as you want.")
+    while count <len(salad_list):
+        print(count," ",salad_list[count])
+        count+=1 
+    print("Press ENTER when you have finished chosing your salads.")
+    salads_added = "" #Will hold a string for more than one item
+    selected_salad=" "#prompt the user to enter a number in select item from salad
+
+    while selected_salad != "": #if enters is not pressed it will keep prompted you to select a salad.
+        selected_salad = input(f"What number salad do you want? \n You have selected: {salads_added}")
+        if selected_salad != "": #If enter pressed this statement won't run.
+            selected_salad= int(selected_salad)
+            #This variable keeps adding on each selected item from salad list. 
+            salads_added = salads_added + " " + salad_list[selected_salad-1]
+    return salads_added.strip()
+
+
 #main program
 print("Welcome to Sam's Sandwich Shop")
+name = str(input("What is your name?"))
+print(name)
+phone_number = str(input("What is your phone number")) 
 bread_choice=bread_selection()
 meat_choice=meat_selection()
 cheese_choice=cheese_selection()
+salad_choice=salads_selection()
+print(f"Your selected bread: {bread_choice}") 
+print(f"Your selected meat: {meat_choice}") 
+print(f"Your selected cheese: {cheese_choice}") 
+print(f"Your selected salads: {salad_choice}")
+sandwhich_order=[] 
