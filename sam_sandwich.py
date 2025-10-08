@@ -64,11 +64,11 @@ def cheese_selection():
     return cheese_list[cheese_selection-1]
 
 def salads_selection(): 
-    salad_list = ["Lettuce", "Tomato","Carrot", "Cucumber","Onion"]
+    salad_list = ["Lettuce", "Tomato","Carrot", "Cucumber","Onion","No Salad"]
     count = 0
     print("We have the following salad options, you can have as many as you want.")
     while count <len(salad_list):
-        print(count," ",salad_list[count])
+        print(count+1," ",salad_list[count])
         count+=1 
     print("Press ENTER when you have finished chosing your salads.")
     salads_added = "" #Will hold a string for more than one item
@@ -83,11 +83,11 @@ def salads_selection():
     return salads_added.strip()
 
 def dressing_selection():
-    dressing_list = ["Tomato","Mayo","BBQ","Hummus"] 
+    dressing_list = ["Tomato","Mayo","BBQ","Hummus","No dressing"] 
     count = 0
     print("We have the following salad options, you can have as many as you want.")
     while count <len(dressing_list):
-        print(count," ",dressing_list[count])
+        print(count+1," ",dressing_list[count])
         count+=1 
     print("Press ENTER when you have finished chosing your salads.")
     dressing_added = "" #Will hold a string for more than one item
@@ -129,7 +129,12 @@ print(f"Your selected meat: {meat_choice}")
 print(f"Your selected cheese: {cheese_choice}") 
 print(f"Your selected salads: {salad_choice}")
 print(f"Your selected dressing: {dressing_choice}")
-sandwhich_order=[bread_choice,meat_choice,cheese_choice,salad_choice,dressing_choice] 
+sandwhich_order=[] #creating empty list
+sandwhich_order.append(f"Bread: {bread_choice}")
+sandwhich_order.append(f"Meat: {meat_choice}")
+sandwhich_order.append(f"Cheese: {cheese_choice}")
+sandwhich_order.append(f"Salad: {salad_choice}")
+sandwhich_order.append(f"Dressing: {dressing_choice}")
 output_textfile(sandwhich_order,name,phone_number)
 
 
