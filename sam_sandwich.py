@@ -101,6 +101,19 @@ def dressing_selection():
             dressing_added = dressing_added + " " + dressing_list[selected_dressing-1]
     return dressing_added.strip()
 
+
+def output_textfile(sandwhich_order,name,phone_number):
+    date_time=datetime.datetime.now()
+    outFile=open("Sams_Sandwhich.txt","a")
+    print(f"*******Order for {name} --- {phone_number}*******")
+    outFile.write(f"\nDate of booking:{date_time}")
+    for booking in sandwhich_order:
+        print(booking)
+        outFile.write("\n {}".format(booking))
+    print(f"*************** End of Order{date_time}***************")
+    outFile.close()#Closes off the textfile 
+    #Once file print, it goes back to the menu 
+
 #main program
 print("Welcome to Sam's Sandwich Shop")
 name = force_name("What is your name?",2,25)
@@ -117,5 +130,6 @@ print(f"Your selected cheese: {cheese_choice}")
 print(f"Your selected salads: {salad_choice}")
 print(f"Your selected dressing: {dressing_choice}")
 sandwhich_order=[bread_choice,meat_choice,cheese_choice,salad_choice,dressing_choice] 
+output_textfile(sandwhich_order,name,phone_number)
 
 
