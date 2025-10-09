@@ -25,7 +25,7 @@ def force_name(message, lower, upper):
 def force_cellphone_number(message,lower,upper):
     while True:
         cell=str(input(message))
-        if len(cell)>=lower and len(cell)>=upper and cell.isnumeric():
+        if len(cell)>=lower and len(cell)<=upper and cell.isnumeric():
             break
         else:
             print(f"ERROR!,please enter between a {lower} - {upper}")
@@ -50,7 +50,7 @@ def meat_selection():
         print(count+1," ",meat_list[count])
         count+=1 
     meat_selection=force_number("Which type of meat do you want? Enter a number",1,len(meat_list))
-    print(f"You selected bread is: {meat_selection}")
+    print(f"You selected meat is: {meat_selection}")
     return meat_list[meat_selection-1]
 
 def cheese_selection():
@@ -60,7 +60,7 @@ def cheese_selection():
         print(count+1," ",cheese_list[count])
         count+=1 
     cheese_selection=force_number("Which type of cheese do you want? Enter a number",1,len(cheese_list))
-    print(f"You selected bread is: {cheese_selection}")
+    print(f"You selected Cheese is: {cheese_selection}")
     return cheese_list[cheese_selection-1]
 
 def salads_selection(): 
@@ -118,8 +118,8 @@ def output_textfile(sandwhich_order,name,phone_number):
 print("Welcome to Sam's Sandwich Shop")
 name = force_name("What is your name?",2,25)
 print(name)
-phone_number = force_cellphone_number("What is your phone number",8,10) 
-bread_choice=bread_selection()
+phone_number = force_cellphone_number("What is your phone number",9,12) 
+bread_choice=bread_selection() #Calling the bread selection function 
 meat_choice=meat_selection()
 cheese_choice=cheese_selection()
 salad_choice=salads_selection()
