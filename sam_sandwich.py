@@ -31,13 +31,17 @@ def force_cellphone_number(message,lower,upper):
             print(f"ERROR!,please enter between a {lower} - {upper}")
     return cell
 
+def print_list(list,item):
+    print(f"We have the following {item}")
+    count=0
+    while count< len(list): #prints out each item on the list
+        print(count+1," ",list[count])
+        count+=1 
+    return 
+
 def bread_selection():
     bread_list = ["White","Brown","Italian","Granary","No Bread"]
-    print("We have the following breads")
-    count=0
-    while count< len(bread_list): #prints out each item on the list
-        print(count+1," ",bread_list[count])
-        count+=1 
+    print_list(bread_list,"breads")
     bread_selection=force_number("Which bread do you want? Enter a number",1,len(bread_list))
     print(f"You selected bread is: {bread_selection}")
     return bread_list[bread_selection-1]
