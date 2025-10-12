@@ -48,32 +48,21 @@ def bread_selection():
 
 def meat_selection():
     meat_list = ["Pork","Chicken","Ham","Tofu","No Meat"] #lists of meat
-    print("We have the following meats")
-    count=0
-    while count< len(meat_list): #prints out each item on the list
-        print(count+1," ",meat_list[count])
-        count+=1 
+    print_list(meat_list,"meat")
     meat_selection=force_number("Which type of meat do you want? Enter a number",1,len(meat_list))
     print(f"You selected meat is: {meat_selection}")
     return meat_list[meat_selection-1]
 
 def cheese_selection():
     cheese_list = ["Cheddar","Brie","Feta","Cotija","No Cheese"]
-    count=0
-    while count< len(cheese_list): #prints out each item on the list
-        print(count+1," ",cheese_list[count])
-        count+=1 
+    print_list(cheese_list,"cheese")
     cheese_selection=force_number("Which type of cheese do you want? Enter a number",1,len(cheese_list))
     print(f"You selected Cheese is: {cheese_selection}")
     return cheese_list[cheese_selection-1]
 
 def salads_selection(): 
     salad_list = ["Lettuce", "Tomato","Carrot", "Cucumber","Onion","No Salad"]
-    count = 0
-    print("We have the following salad options, you can have as many as you want.")
-    while count <len(salad_list):
-        print(count+1," ",salad_list[count])
-        count+=1 
+    print_list(salad_list,"salads")
     print("Press ENTER when you have finished chosing your salads.")
     salads_added = "" #Will hold a string for more than one item
     selected_salad=" "#prompt the user to enter a number in select item from salad
@@ -88,11 +77,7 @@ def salads_selection():
 
 def dressing_selection():
     dressing_list = ["Tomato","Mayo","BBQ","Hummus","No dressing"] 
-    count = 0
-    print("We have the following salad options, you can have as many as you want.")
-    while count <len(dressing_list):
-        print(count+1," ",dressing_list[count])
-        count+=1 
+    print_list(dressing_list,"Dressing")
     print("Press ENTER when you have finished chosing your salads.")
     dressing_added = "" #Will hold a string for more than one item
     selected_dressing=" "#prompt the user to enter a number in select item from salad
@@ -108,7 +93,7 @@ def dressing_selection():
 
 def output_textfile(sandwhich_order,name,phone_number):
     date_time=datetime.datetime.now()
-    outFile=open("Sams_Sandwhich.txt","a")
+    outFile=open("sams_sandwhich.txt","a")
     print(f"*******Order for {name} --- {phone_number}*******")
     outFile.write(f"\nDate of booking:{date_time}")
     for booking in sandwhich_order:
@@ -128,11 +113,6 @@ meat_choice=meat_selection()
 cheese_choice=cheese_selection()
 salad_choice=salads_selection()
 dressing_choice =dressing_selection()
-print(f"Your selected bread: {bread_choice}") 
-print(f"Your selected meat: {meat_choice}") 
-print(f"Your selected cheese: {cheese_choice}") 
-print(f"Your selected salads: {salad_choice}")
-print(f"Your selected dressing: {dressing_choice}")
 sandwhich_order=[] #creating empty list
 sandwhich_order.append(f"Bread: {bread_choice}")
 sandwhich_order.append(f"Meat: {meat_choice}")
@@ -140,5 +120,6 @@ sandwhich_order.append(f"Cheese: {cheese_choice}")
 sandwhich_order.append(f"Salad: {salad_choice}")
 sandwhich_order.append(f"Dressing: {dressing_choice}")
 output_textfile(sandwhich_order,name,phone_number)
+print(output_textfile)
 
 
