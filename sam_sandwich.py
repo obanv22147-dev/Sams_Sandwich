@@ -61,24 +61,30 @@ def cheese_selection():
     return cheese_list[cheese_selection-1]
 
 def salads_selection(): 
-    salad_list = ["Lettuce", "Tomato","Carrot", "Cucumber","Onion","No Salad"]
-    print_list(salad_list,"salads")
+    salad_list = ["Lettuce", "Tomato","Carrot", "Cucumber","Onion","No Salad",]
+    print(f"We have the following salads")
+    count=0
+    while count< len(salad_list): #prints out each item on the list
+        print(count+1," ",salad_list[count])
+        count+=1
     print("Press ENTER when you have finished chosing your salads.")
-    salads_added = "" #Will hold a string for more than one item
-    selected_salad=" "#prompt the user to enter a number in select item from salad
+    salad_choice=[] #empty list to store the selected salad
+    while True: #infinity loop. 
+        salad_option=force_number("What number salad do you want?\n 1-lettuce \n 2-Tomato \n 3-Carrot \n 4-Cucumber \n 5-Onion 6-No Salad",0,len(salad_list))
+        salad_choice.append(salad_list[salad_option-1])
+        exit_salads=str(f"Do you want any more salads? \n Press enter to continue or enter No\n you have selected {salad_choice}")
+        if exit_salads == 6:
+            break
+        more_salads=int(input(f"Do you want to select more salads \n You have already selected: {salad_choice} \n 1 Yes \n 2 No"))
+        if more_salads==2:#if the user does not want more salads the function ends 
+            break
+    return ",".join(salad_choice) #nicely formatted string using commas 
 
-    while selected_salad != "": #if enters is not pressed it will keep prompted you to select a salad.
-        selected_salad = input(f"What number salad do you want? \n You have selected: {salads_added}")
-        if selected_salad != "": #If enter pressed this statement won't run.
-            selected_salad= int(selected_salad)
-            #This variable keeps adding on each selected item from salad list. 
-            salads_added = salads_added + " " + salad_list[selected_salad-1]
-    return salads_added.strip()
 
 def dressing_selection():
     dressing_list = ["Tomato","Mayo","BBQ","Hummus","No dressing"] 
     print_list(dressing_list,"Dressing")
-    print("Press ENTER when you have finished chosing your salads.")
+    print("Press ENTER when you have finished chosing your dressing.")
     dressing_added = "" #Will hold a string for more than one item
     selected_dressing=" "#prompt the user to enter a number in select item from salad
 
@@ -90,7 +96,7 @@ def dressing_selection():
             dressing_added = dressing_added + " " + dressing_list[selected_dressing-1]
     return dressing_added.strip()
 
-
+#This print the sandwhich order 
 def output_textfile(sandwhich_order,name,phone_number):
     date_time=datetime.datetime.now()
     outFile=open("sams_sandwhich.txt","a")
@@ -121,5 +127,3 @@ sandwhich_order.append(f"Salad: {salad_choice}")
 sandwhich_order.append(f"Dressing: {dressing_choice}")
 output_textfile(sandwhich_order,name,phone_number)
 print(output_textfile)
-
-
